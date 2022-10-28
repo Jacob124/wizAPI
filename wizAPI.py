@@ -201,7 +201,7 @@ class wizAPI:
         POSITION = (23, 563)
         COLOR = (126, 41, 3)
         THRESHOLD = 10
-        return not self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
+        return  self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
 
     def is_mana_low(self):
         self.set_active()
@@ -209,7 +209,7 @@ class wizAPI:
         POSITION = (79, 591)
         COLOR = (66, 13, 83)
         THRESHOLD = 10
-        return not self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
+        return  self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
 
     def use_potion_if_needed(self):
         mana_low = self.is_mana_low()
@@ -228,7 +228,7 @@ class wizAPI:
 
     def is_turn_to_play(self):
         """ matches a yellow pixel in the 'pass' button """
-        return self.pixel_matches_color((238, 398), (255, 255, 0), 20)
+        return self.pixel_matches_color((243, 398), (255, 255, 0), 20)
 
     def wait_for_next_turn(self):
         """ Wait for spell round to begin """
@@ -474,11 +474,12 @@ class wizAPI:
         return self
 
     def count_enemies(self):
-        Y = 75
-        COLOR = (207, 186, 135)
+        Y = 65
+        COLOR = (190,160,115)
         num_enemies = 0
+        X= 174
         for i in range(4):
-            X = (174 * (i)) + 203
+            X = X+ (174 * (i)) 
             if self.pixel_matches_color((X, Y), COLOR, threshold=30):
                 num_enemies += 1
 

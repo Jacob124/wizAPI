@@ -38,7 +38,7 @@ while True:
             .hold_key('s', 1)
         )
 
-    """ Success! now wait for our turn to play """
+    print(""" Success! now wait for our turn to play """)
     player.wait_for_turn_to_play()
 
     while (not player.is_idle()) and (player.count_enemies() < 2):
@@ -50,9 +50,10 @@ while True:
 
     inFight = not player.is_idle()
     while inFight:
-
-        if player.enchant('meteor-strike', 'epic') or player.find_spell('meteor-strike-enchanted'):
-            player.cast_spell('meteor-strike-enchanted')
+        if player.find_spell('empower'):
+            player.cast_spell('empower')
+        elif player.enchant('scarecrow', 'accurate') or player.find_spell('scarecrow-enchanted'):
+            player.cast_spell('scarecrow-enchanted')
         else:
             player.pass_turn()
 
