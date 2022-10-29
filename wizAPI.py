@@ -200,16 +200,16 @@ class wizAPI:
         # Matches a pixel in the lower third of the health globe
         POSITION = (23, 563)
         COLOR = (126, 41, 3)
-        THRESHOLD = 10
+        THRESHOLD = 20
         return  self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
 
     def is_mana_low(self):
         self.set_active()
         # Matches a pixel in the lower third of the mana globe
-        POSITION = (79, 591)
-        COLOR = (66, 13, 83)
-        THRESHOLD = 10
-        return  self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
+        POSITION = (100, 600)
+        COLOR = (75, 9, 80)
+        THRESHOLD = 25
+        return  not self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
 
     def use_potion_if_needed(self):
         mana_low = self.is_mana_low()
@@ -218,8 +218,8 @@ class wizAPI:
         if mana_low:
             print('Mana is low, using potion')
         if health_low:
-            print('Health is low, using potion')
-        if mana_low or health_low:
+            print('Health is low, should use potion')
+        if mana_low:# or health_low:
             self.click(160, 590, delay=.2)
 
     def pass_turn(self):
