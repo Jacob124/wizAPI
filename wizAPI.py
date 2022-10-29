@@ -480,9 +480,12 @@ class wizAPI:
         X= 174
         for i in range(4):
             X = X+ (174 * (i)) 
-            if self.pixel_matches_color((X, Y), COLOR, threshold=30):
-                num_enemies += 1
-
+            try:
+                if self.pixel_matches_color((X, Y), COLOR, threshold=30):
+                    num_enemies += 1
+            except:
+                print("threw error on counting enemies trying to prevent a crash check window settings")
+                num_enemies +=1
         if num_enemies == 1:
             print(num_enemies, 'enemy in battle')
         else:
