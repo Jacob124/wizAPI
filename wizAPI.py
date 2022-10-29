@@ -208,7 +208,7 @@ class wizAPI:
         # Matches a pixel in the lower third of the mana globe
         POSITION = (100, 600)
         COLOR = (75, 9, 80)
-        THRESHOLD = 25
+        THRESHOLD = 40
         return  not self.pixel_matches_color(POSITION, COLOR, threshold=THRESHOLD)
 
     def use_potion_if_needed(self):
